@@ -13,18 +13,18 @@ IRsend IrSender;
 const int LED_0 = 9;
 const int LED_1 = 8;
 const int LED_2 = 7;
-//const int LED_3 = 6;
-//const int LED_4 = 4;
-//const int LED_5 = 3;
+const int LED_3 = A2;
+const int LED_4 = A1;
+const int LED_5 = A0;
 const int LED_6 = 15;
 const int LED_7 = 14;
 const int LED_8 = 16;
 const int LED_9 = 10;
 
-const int buttonRIGHT = 3;
-const int buttonLEFT = 4;
-const int buttonSTALL = 6;
 const int ACTIVATIONPin = 2; 
+const int buttonLEFT = 3;
+const int buttonSTALL = 4;
+const int buttonRIGHT = 6;
 int buttonState = 0;   
 
 
@@ -32,9 +32,9 @@ void setup() {
     pinMode(LED_0, OUTPUT);
     pinMode(LED_1, OUTPUT);
     pinMode(LED_2, OUTPUT);
-//    pinMode(LED_3, OUTPUT);
-//    pinMode(LED_4, OUTPUT);
-//    pinMode(LED_5, OUTPUT);
+    pinMode(LED_3, OUTPUT);
+    pinMode(LED_4, OUTPUT);
+    pinMode(LED_5, OUTPUT);
     pinMode(LED_6, OUTPUT);
     pinMode(LED_7, OUTPUT);
     pinMode(LED_8, OUTPUT);
@@ -68,24 +68,24 @@ if (digitalRead(ACTIVATIONPin) == HIGH)
 {
 delay(50);
 IrSender.sendNEC(botON, nbits);
-delay(200);
+delay(600);
 }
 if (digitalRead(buttonRIGHT) == HIGH)
 {
 delay(50);
 IrSender.sendNEC(botRIGHT, nbits);
-delay(200);
+delay(600);
 }
 if (digitalRead(buttonLEFT) == HIGH)
 {
 delay(50);
 IrSender.sendNEC(botLEFT, nbits);
-delay(200);
+delay(600);
 }
 if (digitalRead(buttonSTALL) == HIGH)
 {
 delay(50);
 IrSender.sendNEC(botSTALL, nbits);
-delay(200);
+delay(600);
 }
 }
