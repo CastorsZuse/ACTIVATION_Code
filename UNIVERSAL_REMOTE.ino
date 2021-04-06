@@ -20,7 +20,7 @@ const int ZAPPERgreenPin = 14;
 const int ZAPPERredBluePin = 15;
 const int ZAPPERredGreenPin = 18;
 const int ZAPPERblueGreenPin = 19;
-
+const int debounceDelay = 10;
 int buttonState = 0;   
 
 
@@ -68,67 +68,67 @@ uint8_t sRepeats = 0;
 
   void loop() {
     if (digitalRead(ACTIVATIONPin) == HIGH){
-    delay(50);
+    delay(debounceDelay);
     IrSender.sendNEC(botON, nbits);
     delay(600);
 }
       if (digitalRead(BUMPleftPin) == HIGH){
-      delay(50);
+      delay(debounceDelay);
       IrSender.sendNEC(botLEFT, nbits);
       delay(600);
 }
         if (digitalRead(STALLPin) == HIGH){
-        delay(50);
+        delay(debounceDelay);
         IrSender.sendNEC(botSTALL, nbits);
         delay(600);
 }
           if (digitalRead(BUMPrightPin) == HIGH){
-          delay(50);
+          delay(debounceDelay);
           IrSender.sendNEC(botRIGHT, nbits);
           delay(600);
 }
             if (digitalRead(NOPEleftPin) == HIGH){
-            delay(50);
+            delay(debounceDelay);
             IrSender.sendNEC(botNOPEleft, nbits);
             delay(600);
 }
               if (digitalRead(NOPEbackPin) == HIGH){
-              delay(50);
+              delay(debounceDelay);
               IrSender.sendNEC(botNOPEback, nbits);
               delay(600);
 }
                 if (digitalRead(NOPErightPin) == HIGH){
-                delay(50);
+                delay(debounceDelay);
                 IrSender.sendNEC(botNOPEright, nbits);
                 delay(600);
 }
                   if (digitalRead(ZAPPERredPin) == HIGH){
-                  delay(50);
+                  delay(debounceDelay);
                   IrSender.sendNEC(botZAPPERred, nbits);
                   delay(600);
 }
                     if (digitalRead(ZAPPERgreenPin) == HIGH){
-                    delay(50);
+                    delay(debounceDelay);
                     IrSender.sendNEC(botZAPPERgreen, nbits);
                     delay(600);
 }
                       if (digitalRead(ZAPPERbluePin) == HIGH){
-                      delay(50);
+                      delay(debounceDelay);
                       IrSender.sendNEC(botZAPPERblue, nbits);
                       delay(600);
 }
                         if (digitalRead(ZAPPERredBluePin) == HIGH){
-                        delay(50);
+                        delay(debounceDelay);
                         IrSender.sendNEC(botZAPPERredBlue, nbits);
                         delay(600);
 }
                           if (digitalRead(ZAPPERredGreenPin) == HIGH){
-                          delay(50);
+                          delay(debounceDelay);
                           IrSender.sendNEC(botZAPPERredGreen, nbits);
                           delay(600);
 }
                             if (digitalRead(ZAPPERblueGreenPin) == HIGH){
-                            delay(50);
+                            delay(debounceDelay);
                             IrSender.sendNEC(botZAPPERblueGreen, nbits);
                             delay(600);
   }
