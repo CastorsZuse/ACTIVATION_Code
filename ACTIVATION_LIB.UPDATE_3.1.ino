@@ -54,6 +54,148 @@ void setup() {
     pinMode(buttonNOPEright, INPUT);
     pinMode(buttonACTIVATION, INPUT);
     
+    /////////////////////////////////////////////////
+//START UP RGB SEQUENCE 
+/////////////////////////////////////////////////
+
+    digitalWrite(Rgb, HIGH);
+    delay (350);
+    digitalWrite(Rgb, LOW);  
+    digitalWrite(rGb, HIGH);
+    delay (350);
+    digitalWrite(rGb, LOW);
+    digitalWrite(rgB, HIGH);
+    delay (350);
+    digitalWrite(rgB, LOW);
+
+
+////////////////////////////////////////////////
+//LED RING START UP SEQUENCE 
+////////////////////////////////////////////////
+    
+    digitalWrite(LED_0, HIGH);
+    digitalWrite(LED_9, HIGH);
+    delay (100);
+    digitalWrite(LED_1, HIGH);
+    digitalWrite(LED_8, HIGH);
+    delay (100);
+    digitalWrite(LED_2, HIGH);
+    digitalWrite(LED_7, HIGH);
+    delay (100);
+    digitalWrite(LED_3, HIGH);
+    digitalWrite(LED_6, HIGH);
+    delay (100);
+    digitalWrite(LED_4, HIGH);
+    digitalWrite(LED_5, HIGH);
+    delay (250);
+
+    digitalWrite(LED_0, HIGH);
+    digitalWrite(LED_1, HIGH);
+    digitalWrite(LED_2, HIGH);
+    digitalWrite(LED_3, HIGH);
+    digitalWrite(LED_4, HIGH);
+    digitalWrite(LED_5, HIGH);
+    digitalWrite(LED_6, HIGH);
+    digitalWrite(LED_7, HIGH);
+    digitalWrite(LED_8, HIGH);
+    digitalWrite(LED_9, HIGH);
+    delay(100);
+    digitalWrite(LED_0, LOW);
+    digitalWrite(LED_1, LOW);
+    digitalWrite(LED_2, LOW);
+    digitalWrite(LED_3, LOW);
+    digitalWrite(LED_4, LOW);
+    digitalWrite(LED_5, LOW);
+    digitalWrite(LED_6, LOW);
+    digitalWrite(LED_7, LOW);
+    digitalWrite(LED_8, LOW);
+    digitalWrite(LED_9, LOW);
+    delay(100);
+    digitalWrite(LED_0, HIGH);
+    digitalWrite(LED_1, HIGH);
+    digitalWrite(LED_2, HIGH);
+    digitalWrite(LED_3, HIGH);
+    digitalWrite(LED_4, HIGH);
+    digitalWrite(LED_5, HIGH);
+    digitalWrite(LED_6, HIGH);
+    digitalWrite(LED_7, HIGH);
+    digitalWrite(LED_8, HIGH);
+    digitalWrite(LED_9, HIGH);
+    delay(100);
+    digitalWrite(LED_0, LOW);
+    digitalWrite(LED_1, LOW);
+    digitalWrite(LED_2, LOW);
+    digitalWrite(LED_3, LOW);
+    digitalWrite(LED_4, LOW);
+    digitalWrite(LED_5, LOW);
+    digitalWrite(LED_6, LOW);
+    digitalWrite(LED_7, LOW);
+    digitalWrite(LED_8, LOW);
+    digitalWrite(LED_9, LOW);
+    delay(100);
+    digitalWrite(LED_0, HIGH);
+    digitalWrite(LED_1, HIGH);
+    digitalWrite(LED_2, HIGH);
+    digitalWrite(LED_3, HIGH);
+    digitalWrite(LED_4, HIGH);
+    digitalWrite(LED_5, HIGH);
+    digitalWrite(LED_6, HIGH);
+    digitalWrite(LED_7, HIGH);
+    digitalWrite(LED_8, HIGH);
+    digitalWrite(LED_9, HIGH);
+    delay(100);
+    digitalWrite(LED_0, LOW);
+    digitalWrite(LED_1, LOW);
+    digitalWrite(LED_2, LOW);
+    digitalWrite(LED_3, LOW);
+    digitalWrite(LED_4, LOW);
+    digitalWrite(LED_5, LOW);
+    digitalWrite(LED_6, LOW);
+    digitalWrite(LED_7, LOW);
+    digitalWrite(LED_8, LOW);
+    digitalWrite(LED_9, LOW);
+    delay(100);
+    digitalWrite(LED_9, HIGH);
+    delay (50);
+    digitalWrite(LED_8, HIGH);
+    delay (50);
+    digitalWrite(LED_7, HIGH);
+    delay (50);
+    digitalWrite(LED_6, HIGH);
+    delay (50);
+    digitalWrite(LED_5, HIGH);
+    delay (50);
+    digitalWrite(LED_4, HIGH);
+    delay (50);
+    digitalWrite(LED_3, HIGH);
+    delay (50);
+    digitalWrite(LED_2, HIGH);
+    delay (50);
+    digitalWrite(LED_1, HIGH);
+    delay (50);
+    digitalWrite(LED_0, HIGH);
+    delay(750);
+    
+////////////////////////////////////////////////
+// RGB LED MAIN COLOR 
+///////////////////////////////////////////////
+
+    digitalWrite(Rgb, HIGH);
+    digitalWrite(rGb, HIGH);
+    digitalWrite(rgB, HIGH);
+    delay(250);
+    digitalWrite(Rgb, LOW);
+    digitalWrite(rGb, LOW);
+    digitalWrite(rgB, LOW);
+    delay(250);
+    digitalWrite(Rgb, HIGH);
+    digitalWrite(rGb, HIGH);
+    digitalWrite(rgB, HIGH);
+
+////////////////////////////////////////////////
+//END STATRT UP SEQUENCES 
+////////////////////////////////////////////////
+    
     Serial.begin(115200);
 #if defined(__AVR_ATmega32U4__) || defined(SERIAL_USB) || defined(SERIAL_PORT_USBVIRTUAL)  || defined(ARDUINO_attiny3217)
     delay(1000); // To be able to connect Serial monitor after reset or power up and before first printout
