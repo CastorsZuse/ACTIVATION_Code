@@ -1,10 +1,11 @@
-// BUMP CODE TESTING 
-// MOVED BUTTON INPUTS
-// MULTIPLE IF STATEMENTS WORKING
+// BUMP CODE
+// NOPE CODES
+// UPDATED TO 3.0 LIB
+// UNIFIED LANGUAGE ACROSS CODES
 
+#include <Arduino.h>
 #include <ButtonDebounce.h>
 #include <IRremote.h>
-IRsend IrSender;
 
 #if defined(ARDUINO_ARCH_SAMD)
 #define Serial SerialUSB
@@ -20,11 +21,16 @@ const int LED_6 = 15;
 const int LED_7 = 14;
 const int LED_8 = 16;
 const int LED_9 = 10;
-
-const int ACTIVATIONPin = 2; 
+const int buzzer = A3;
+const int buttonACTIVATION = 2; 
 const int buttonLEFT = 3;
 const int buttonSTALL = 4;
 const int buttonRIGHT = 6;
+const int buttonNOPEleft = 7;
+const int buttonNOPEback = 8;
+const int buttonNOPEright = 9;
+const int IR_SEND_PIN = 5;
+const int debounceDelay = 50;
 int buttonState = 0;   
 
 
@@ -39,53 +45,78 @@ void setup() {
     pinMode(LED_7, OUTPUT);
     pinMode(LED_8, OUTPUT);
     pinMode(LED_9, OUTPUT);
-    
+    pinMode(buzzer, OUTPUT);    
     pinMode(buttonRIGHT, INPUT);
     pinMode(buttonLEFT, INPUT);
     pinMode(buttonSTALL, INPUT);
-    pinMode(ACTIVATIONPin, INPUT);
+    pinMode(buttonNOPEleft, INPUT);
+    pinMode(buttonNOPEback, INPUT);
+    pinMode(buttonNOPEright, INPUT);
+    pinMode(buttonACTIVATION, INPUT);
     
-    
-     
     Serial.begin(115200);
-#if defined(__AVR_ATmega32U4__) || defined(SERIAL_USB) || defined(SERIAL_PORT_USBVIRTUAL)
-    delay(2000);
+#if defined(__AVR_ATmega32U4__) || defined(SERIAL_USB) || defined(SERIAL_PORT_USBVIRTUAL)  || defined(ARDUINO_attiny3217)
+    delay(1000); // To be able to connect Serial monitor after reset or power up and before first printout
 #endif
-    Serial.println(F("START " __FILE__ " from " __DATE__));
+    // Just to know which program is running on my Arduino
+    Serial.println(F("START " __FILE__ " from " __DATE__ "\r\nUsing library version " VERSION_IRREMOTE));
+
+    IrSender.begin(IR_SEND_PIN, ENABLE_LED_FEEDBACK); // Specify send pin and enable feedback LED at default feedback LED pin
+
     Serial.print(F("Ready to send IR signals at pin "));
     Serial.println(IR_SEND_PIN);
 }
-uint32_t botON = 0xFFC23D; // BOTS ON
-uint32_t botRIGHT = 0xFFE21D; // BOT BUMP RIGHT
-uint32_t botLEFT = 0xFFA25D; // BOT BUMP LEFT
+uint32_t botACTIVATION = 0xFFC23D; // BOTS ON
+uint32_t botBumpRIGHT = 0xFFE21D; // BOT BUMP RIGHT
+uint32_t botBumpLEFT = 0xFFA25D; // BOT BUMP LEFT
 uint32_t botSTALL = 0xFF629D; // BOT SWITCHES TO REVERSE 
+uint32_t botNOPEleft = 0xFFE01F;
+uint32_t botNOPEback = 0xFFA857;
+uint32_t botNOPEright = 0xFF906F;
 uint8_t nbits = 32;
+uint8_t sCommand = 0x34;
 uint8_t sRepeats = 0;
 
-void loop() 
-{
-if (digitalRead(ACTIVATIONPin) == HIGH)
-{
-delay(50);
-IrSender.sendNEC(botON, nbits);
-delay(600);
+  void loop() {
+    if (digitalRead(buttonACTIVATION) == HIGH){
+    delay(debounceDelay);
+    IrSender.sendNEC(botACTIVATION, sCommand, sRepeats);
+    delay(600);
 }
-if (digitalRead(buttonRIGHT) == HIGH)
-{
-delay(50);
-IrSender.sendNEC(botRIGHT, nbits);
-delay(600);
+
+    if (digitalRead(buttonRIGHT) == HIGH){
+    delay(debounceDelay);
+    IrSender.sendNEC(botBumpRIGHT, sCommand, sRepeats);
+    delay(600);
 }
-if (digitalRead(buttonLEFT) == HIGH)
-{
-delay(50);
-IrSender.sendNEC(botLEFT, nbits);
-delay(600);
+
+    if (digitalRead(buttonLEFT) == HIGH){
+    delay(debounceDelay);
+    IrSender.sendNEC(botBumpLEFT, sCommand, sRepeats);
+    delay(600);
 }
-if (digitalRead(buttonSTALL) == HIGH)
-{
-delay(50);
-IrSender.sendNEC(botSTALL, nbits);
-delay(600);
+
+    if (digitalRead(buttonSTALL) == HIGH){
+    delay(debounceDelay);
+    IrSender.sendNEC(botSTALL, sCommand, sRepeats);
+    delay(600);
+}
+
+    if (digitalRead(buttonNOPEleft) == HIGH){
+    delay(debounceDelay);
+    IrSender.sendNEC(botNOPEleft, sCommand, sRepeats);
+    delay(600);
+}
+
+    if (digitalRead(buttonNOPEright) == HIGH){
+    delay(debounceDelay);
+    IrSender.sendNEC(botNOPEright, sCommand, sRepeats);
+    delay(600);
+}
+
+    if (digitalRead(buttonNOPEback) == HIGH){
+    delay(debounceDelay);
+    IrSender.sendNEC(botNOPEback, sCommand, sRepeats);
+    delay(600);
 }
 }
