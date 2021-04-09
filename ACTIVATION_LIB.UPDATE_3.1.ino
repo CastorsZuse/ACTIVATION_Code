@@ -33,7 +33,51 @@ const int IR_SEND_PIN = 5;
 const int debounceDelay = 50;
 int buttonState = 0;   
 
+   void sequence(){
+    digitalWrite(LED_0, LOW);
+    delay(10);
+    digitalWrite(LED_1, LOW);
+    delay(10);
+    digitalWrite(LED_2, LOW);
+    delay(10);
+    digitalWrite(LED_3, LOW);
+    delay(10);
+    digitalWrite(LED_4, LOW);
+    delay(10);
+    digitalWrite(LED_5, LOW);
+    delay(10);
+    digitalWrite(LED_6, LOW);
+    delay(10);
+    digitalWrite(LED_7, LOW);
+    delay(10);
+    digitalWrite(LED_8, LOW);
+    delay(10);
+    digitalWrite(LED_9, LOW);
+    delay(10);
 
+    digitalWrite(LED_0, HIGH);
+    delay(10);
+    digitalWrite(LED_1, HIGH);
+    delay(10);
+    digitalWrite(LED_2, HIGH);
+    delay(10);
+    digitalWrite(LED_3, HIGH);
+    delay(10);
+    digitalWrite(LED_4, HIGH);
+    delay(10);
+    digitalWrite(LED_5, HIGH);
+    delay(10);
+    digitalWrite(LED_6, HIGH);
+    delay(10);
+    digitalWrite(LED_7, HIGH);
+    delay(10);
+    digitalWrite(LED_8, HIGH);
+    delay(10);
+    digitalWrite(LED_9, HIGH);
+    delay(10);
+   }
+       
+       
 void setup() {
     pinMode(LED_0, OUTPUT);
     pinMode(LED_1, OUTPUT);
@@ -53,21 +97,6 @@ void setup() {
     pinMode(buttonNOPEback, INPUT);
     pinMode(buttonNOPEright, INPUT);
     pinMode(buttonACTIVATION, INPUT);
-    
-    /////////////////////////////////////////////////
-//START UP RGB SEQUENCE 
-/////////////////////////////////////////////////
-
-    digitalWrite(Rgb, HIGH);
-    delay (350);
-    digitalWrite(Rgb, LOW);  
-    digitalWrite(rGb, HIGH);
-    delay (350);
-    digitalWrite(rGb, LOW);
-    digitalWrite(rgB, HIGH);
-    delay (350);
-    digitalWrite(rgB, LOW);
-
 
 ////////////////////////////////////////////////
 //LED RING START UP SEQUENCE 
@@ -175,22 +204,6 @@ void setup() {
     delay (50);
     digitalWrite(LED_0, HIGH);
     delay(750);
-    
-////////////////////////////////////////////////
-// RGB LED MAIN COLOR 
-///////////////////////////////////////////////
-
-    digitalWrite(Rgb, HIGH);
-    digitalWrite(rGb, HIGH);
-    digitalWrite(rgB, HIGH);
-    delay(250);
-    digitalWrite(Rgb, LOW);
-    digitalWrite(rGb, LOW);
-    digitalWrite(rgB, LOW);
-    delay(250);
-    digitalWrite(Rgb, HIGH);
-    digitalWrite(rGb, HIGH);
-    digitalWrite(rgB, HIGH);
 
 ////////////////////////////////////////////////
 //END STATRT UP SEQUENCES 
@@ -223,42 +236,42 @@ uint8_t sRepeats = 0;
     if (digitalRead(buttonACTIVATION) == HIGH){
     delay(debounceDelay);
     IrSender.sendNEC(botACTIVATION, sCommand, sRepeats);
-    delay(600);
+    sequence();
 }
 
     if (digitalRead(buttonRIGHT) == HIGH){
     delay(debounceDelay);
     IrSender.sendNEC(botBumpRIGHT, sCommand, sRepeats);
-    delay(600);
+    sequence();
 }
 
     if (digitalRead(buttonLEFT) == HIGH){
     delay(debounceDelay);
     IrSender.sendNEC(botBumpLEFT, sCommand, sRepeats);
-    delay(600);
+    sequence();
 }
 
     if (digitalRead(buttonSTALL) == HIGH){
     delay(debounceDelay);
     IrSender.sendNEC(botSTALL, sCommand, sRepeats);
-    delay(600);
+    sequence();
 }
 
     if (digitalRead(buttonNOPEleft) == HIGH){
     delay(debounceDelay);
     IrSender.sendNEC(botNOPEleft, sCommand, sRepeats);
-    delay(600);
+    sequence();
 }
 
     if (digitalRead(buttonNOPEright) == HIGH){
     delay(debounceDelay);
     IrSender.sendNEC(botNOPEright, sCommand, sRepeats);
-    delay(600);
+    sequence();
 }
 
     if (digitalRead(buttonNOPEback) == HIGH){
     delay(debounceDelay);
     IrSender.sendNEC(botNOPEback, sCommand, sRepeats);
-    delay(600);
+    sequence();
 }
 }
